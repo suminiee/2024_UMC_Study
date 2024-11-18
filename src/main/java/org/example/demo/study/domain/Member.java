@@ -9,6 +9,9 @@ import org.example.demo.study.domain.enums.SocialType;
 import org.example.demo.study.domain.mapping.MemberAgree;
 import org.example.demo.study.domain.mapping.MemberMission;
 import org.example.demo.study.domain.mapping.MemberPrefer;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +22,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class Member extends BaseEntity {
 
     @Id
@@ -28,8 +33,17 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
+//    @Column(nullable = false)
+//    private Integer age;
+
     @Column(nullable = false)
-    private Integer age;
+    Integer birthYear;
+
+    @Column(nullable = false)
+    Integer birthMonth;
+
+    @Column(nullable = false)
+    Integer birthDay;
 
     @Column(nullable = false, length = 40)
     private String address;
@@ -50,9 +64,10 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

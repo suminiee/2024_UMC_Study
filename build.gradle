@@ -32,9 +32,10 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
-    implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.9'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'  // Hibernate Validator 추가
     implementation 'org.glassfish:jakarta.el:4.0.2'  // EL API 추가
