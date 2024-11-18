@@ -5,5 +5,5 @@ import org.example.demo.study.dto.review.ReviewRequestDTO;
 
 public interface ReviewService {
 
-    Review addReview(ReviewRequestDTO.AddReview reqest);
+    Review addReview(ReviewRequestDTO.AddReview request);
 }

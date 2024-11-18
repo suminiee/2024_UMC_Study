@@ -24,15 +24,15 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Transactional
     @Override
-    public Review addReview(ReviewRequestDTO.AddReview reqest) {
+    public Review addReview(ReviewRequestDTO.AddReview request) {
 
-        Store store = storeRepository.findById(reqest.getStoreId()).orElseThrow(
+        Store store = storeRepository.findById(request.getStoreId()).orElseThrow(
                 () -> new ReviewException(ReviewErrorCode.STORE_NOT_FOUND));
 
-        Member member = memberRepository.findById(reqest.getMemberId()).orElseThrow(
+        Member member = memberRepository.findById(request.getMemberId()).orElseThrow(
                 () -> new ReviewException(ReviewErrorCode.MEMBER_NOT_FOUND));
 
-        Review newReview = ReviewConverter.toReview(reqest, member, store);
+        Review newReview = ReviewConverter.toReview(request, member, store);
 
         return reviewRepository.save(newReview);
     }
