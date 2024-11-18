@@ -10,9 +10,6 @@ import org.example.demo.study.repository.RegionRepository;
 
 public class StoreConverter {
 
-    private static RegionRepository regionRepository;
-
-
     public static StoreResponseDTO.AddResultDTO toAddResultDTO(Store store) {
         return StoreResponseDTO.AddResultDTO.builder()
                 .storeId(store.getId())

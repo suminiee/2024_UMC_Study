@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class StoreController {
+public class StoreRestController {
 
     private final StoreService storeService;
 
@@ -22,4 +22,5 @@ public class StoreController {
         Store storeResult = storeService.addStore(request);
         return ApiResponse.onSuccess(StoreConverter.toAddResultDTO(storeResult));
     }
+
 }
