@@ -9,11 +9,13 @@ import java.util.stream.Collectors;
 public class MemberPreferConverter {
 
     //??어떻게짜야하지...
-    public static List<MemberPrefer> toMemberPreferList(List<FoodCategory> foodCategoryList) {
+    public static List<MemberPrefer> toMemberPreferList(List<FoodCategory> foodCategoryList){
+
         return foodCategoryList.stream()
-                .map(foodCategory -> MemberPrefer.builder()
-                        .foodCategory(foodCategory)
-                        .build())
-                .collect(Collectors.toList());
+                .map(foodCategory ->
+                        MemberPrefer.builder()
+                                .foodCategory(foodCategory)
+                                .build()
+                ).collect(Collectors.toList());
     }
 }

@@ -3,6 +3,9 @@ package org.example.demo.study.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.demo.study.domain.common.BaseEntity;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class Store extends BaseEntity {
 
     @Id
@@ -25,6 +30,7 @@ public class Store extends BaseEntity {
     private String address;
 
     @Column(nullable = false)
+    @ColumnDefault("0")
     private Float score;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,15 +43,15 @@ public class Store extends BaseEntity {
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "Store{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", score=" + score +
-                ", region=" + (region != null ? region.getName() : "N/A") + // region의 이름 출력
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Store{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", address='" + address + '\'' +
+//                ", score=" + score +
+//                ", region=" + (region != null ? region.getName() : "N/A") + // region의 이름 출력
+//                '}';
+//    }
 
 }
