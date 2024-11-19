@@ -3,8 +3,11 @@ package org.example.demo.study.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.demo.study.apiPayload.ApiResponse;
+import org.example.demo.study.converter.MemberMissionConverter;
 import org.example.demo.study.converter.MissionConverter;
 import org.example.demo.study.domain.Mission;
+import org.example.demo.study.domain.mapping.MemberMission;
+import org.example.demo.study.dto.mission.MemberMissionRequestDTO;
 import org.example.demo.study.dto.mission.MissionRequestDTO;
 import org.example.demo.study.service.missionService.MissionService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +24,12 @@ public class MissionRestController {
     ApiResponse<?> addMission(@RequestBody @Valid MissionRequestDTO.AddMission request) {
         Mission missionResult = missionService.addMission(request);
         return ApiResponse.onSuccess(MissionConverter.toAddResultDTO(missionResult));
+    }
+
+    @PostMapping("/members/missions/add")
+    ApiResponse<?> addMemberMission(@RequestBody @Valid MemberMissionRequestDTO.AddMemberMission request) {
+        MemberMission memberMissionResult = missionService.addMemberMission(request);
+        return ApiResponse.onSuccess(MemberMissionConverter.addMemberMissionResultDTO(memberMissionResult));
     }
 
 }
