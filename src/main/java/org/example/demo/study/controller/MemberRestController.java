@@ -3,6 +3,8 @@ package org.example.demo.study.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.demo.study.apiPayload.ApiResponse;
+import org.example.demo.study.converter.MemberConverter;
+import org.example.demo.study.domain.Member;
 import org.example.demo.study.dto.MemberRequestDTO;
 import org.example.demo.study.dto.MemberResponseDTO;
 import org.example.demo.study.service.memberService.MemberService;
@@ -20,8 +22,8 @@ public class MemberRestController {
 
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDto request) {
-        memberService.joinMember(request);
-        return null;
+        Member member =  memberService.joinMember(request);
+        return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
 
 }

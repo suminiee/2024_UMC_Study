@@ -1,4 +1,4 @@
-package org.example.demo.study.service.StoreService;
+package org.example.demo.study.service.storeService;
 
 import lombok.RequiredArgsConstructor;
 import org.example.demo.study.domain.Store;

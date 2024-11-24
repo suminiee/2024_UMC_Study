@@ -27,6 +27,6 @@ public class MemberMission extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
-    private Mission misson;
+    private Mission mission;
 
 }
