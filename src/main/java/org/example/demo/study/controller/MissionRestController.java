@@ -62,6 +62,9 @@ public class MissionRestController {
 
     @PatchMapping("/{missionId}/complete-request")
     @Operation(summary = "미션 진행 상태를 완료로 변경하는 API", description = "특정 유저의 특정 미션의 진행 상태를 완료로 변경하는 API입니다.")
+    @Parameters({
+            @Parameter(name = "memberId", description = "멤버의 id, path variable 입니다.")
+    })
     public ApiResponse<MemberMissionResponseDTO.memberMissionResultDTO> updateMissionStatus(@PathVariable(name = "missionId") Long missionId,
                                                                                             @RequestParam(name = "memberId") Long memberId) {
 
