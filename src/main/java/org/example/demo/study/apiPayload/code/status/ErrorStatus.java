@@ -24,6 +24,12 @@ public enum ErrorStatus implements BaseErrorCode {
     // 예시,,,
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
 
+    // Store Error
+    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE_401","가게가 없습니다."),
+
+    // Store Error
+    PAGE_EXCEPTION(HttpStatus.BAD_REQUEST, "PAGE_400","올바른 Page 값이 아닙니다."),
+
     //For test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP401", "이거는 테스트");
 

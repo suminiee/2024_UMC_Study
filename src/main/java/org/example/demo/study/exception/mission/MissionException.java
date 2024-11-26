@@ -1,5 +1,6 @@
 package org.example.demo.study.exception.mission;
 
+import lombok.Getter;
 import org.example.demo.study.apiPayload.code.BaseErrorCode;
 import org.example.demo.study.apiPayload.code.exception.GeneralException;
 
