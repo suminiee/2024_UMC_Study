@@ -41,6 +41,9 @@ public class MemberConverter {
                 .birthYear(request.getBirthYear())
                 .birthMonth(request.getBirthMonth())
                 .birthDay(request.getBirthDay())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .role(request.getRole())
                 .build();
     }
 }

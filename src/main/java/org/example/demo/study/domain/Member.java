@@ -5,6 +5,7 @@ import lombok.*;
 import org.example.demo.study.domain.common.BaseEntity;
 import org.example.demo.study.domain.enums.MemberStatus;
 import org.example.demo.study.domain.enums.Gender;
+import org.example.demo.study.domain.enums.Role;
 import org.example.demo.study.domain.enums.SocialType;
 import org.example.demo.study.domain.mapping.MemberAgree;
 import org.example.demo.study.domain.mapping.MemberMission;
@@ -64,11 +65,17 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String email;
 
     @ColumnDefault("0")
     private Integer point;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberAgree> memberAgreeList = new ArrayList<>();
@@ -81,5 +88,9 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 
 }

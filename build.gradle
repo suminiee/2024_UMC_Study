@@ -39,6 +39,17 @@ dependencies {
 
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'  // Hibernate Validator 추가
     implementation 'org.glassfish:jakarta.el:4.0.2'  // EL API 추가
+
+    //기본적으로 자동설정을 통해 프로젝트에 기본적인 보안 기능 적용 -> 별도의 설정이나 코드 작성 없이도 시스템에 기본적인 보안 활성화
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    //Thymeleaf 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+
+    //Spring Security OAuth2 클라이언트 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 sourceSets {

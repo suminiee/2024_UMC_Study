@@ -8,10 +8,9 @@ import org.example.demo.study.domain.Member;
 import org.example.demo.study.dto.MemberRequestDTO;
 import org.example.demo.study.dto.MemberResponseDTO;
 import org.example.demo.study.service.memberService.MemberService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,5 +24,6 @@ public class MemberRestController {
         Member member =  memberService.joinMember(request);
         return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
+
 
 }

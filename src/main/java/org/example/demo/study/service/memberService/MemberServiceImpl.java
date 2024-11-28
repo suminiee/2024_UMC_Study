@@ -11,6 +11,7 @@ import org.example.demo.study.exception.foodCategory.FoodCategoryErrorCode;
 import org.example.demo.study.exception.foodCategory.FoodCategoryException;
 import org.example.demo.study.repository.FoodCategoryRepository;
 import org.example.demo.study.repository.MemberRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,12 +25,15 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
     private final FoodCategoryRepository foodCategoryRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public Member joinMember(MemberRequestDTO.JoinDto request) {
 
         Member newMember = MemberConverter.toMember(request);
+
+        newMember.encodePassword(passwordEncoder.encode(request.getPassword()));
 
         List<FoodCategory> foodCategoryList = request.getPreferCategory().stream()
                 .map(category -> {
